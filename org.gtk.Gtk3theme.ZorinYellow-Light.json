@@ -1,0 +1,42 @@
+{
+  "id": "org.gtk.Gtk3theme.ZorinYellow-Light",
+  "branch": "3.22",
+  "runtime": "org.freedesktop.Platform",
+  "build-extension": true,
+  "sdk": "org.freedesktop.Sdk",
+  "runtime-version": "24.08",
+  "appstream-compose": false,
+  "separate-locales": false,
+  "modules": [
+    {
+      "name": "ZorinYellow-Light",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -pm 755 /usr/share/runtime/share/themes/ZorinYellow-Light/gtk-3.0",
+        "cp -fr ZorinYellow-Light/gtk-3.0/* /usr/share/runtime/share/themes/ZorinYellow-Light/gtk-3.0"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/ZorinOS/zorin-desktop-themes/archive/5.0.4.tar.gz",
+          "sha256": "a7c9ca0d5517586d58b14b2fc6bda8d90cb40159db9b9c6eb2bb2ff9b730bba1"
+        }
+      ]
+    },
+    {
+      "name": "appdata",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p ${FLATPAK_DEST}/share/appdata",
+        "cp org.gtk.Gtk3theme.ZorinYellow-Light.appdata.xml ${FLATPAK_DEST}/share/appdata",
+        "appstream-compose --basename=org.gtk.Gtk3theme.ZorinYellow-Light --prefix=${FLATPAK_DEST} --origin=flatpak org.gtk.Gtk3theme.ZorinYellow-Light"
+      ],
+      "sources": [
+        {
+          "type": "file",
+          "path": "org.gtk.Gtk3theme.ZorinYellow-Light.appdata.xml"
+        }
+      ]
+}
+  ]
+}
